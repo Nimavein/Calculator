@@ -10,13 +10,17 @@ let declaredOperator = "";
 let equalButton = document.getElementById("equal-sign");
 let newArray =[];
 let clearElementButton = document.getElementById("clear-element");
+let dotButton = document.getElementById("dot-button")
 
 // Adding number to the input field
 
 
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener("click", () => {
-        if (numberButtons[i].innerText === "." && displayField.value.includes('.')) {
+        if (numberButtons[i].innerText === "." && displayField.value.includes('.') 
+        && (!displayField.value.includes("+")) && (!displayField.value.includes("-")) 
+        && (!displayField.value.includes("*")) && (!displayField.value.includes("/"))){
+           
         }
         else {
             displayField.value += numberButtons[i].innerText;
@@ -42,9 +46,6 @@ for (let i = 0; i < operationButtons.length; i++) {
         //    console.log(declaredOperator);
             displayField.value += declaredOperator;
         }
-
-
-
 
         else if ((operationButtons[i].innerText === "+" || operationButtons[i].innerText === "-" || 
         operationButtons[i].innerText === "*" || operationButtons[i].innerText === "/") 
@@ -97,7 +98,13 @@ let resultFunction = equalButton.addEventListener("click", () => {
     }
 
     else if (declaredOperator === "/") {
-        finalResult = newArray[0] / newArray[1];
+        if (newArray.includes("-")) {
+            newArray[0] = newArray[0].slice(1, newArray[0].length)
+            finalResult = newArray[0] / newArray[1]
+        } else {
+            finalResult = newArray[0] / newArray[1];
+        }
+        
         displayField.value = finalResult;
     }
     
