@@ -9,6 +9,7 @@ let operationButtons = document.getElementsByClassName("operator");
 let declaredOperator = "";
 let equalButton = document.getElementById("equal-sign");
 let newArray =[];
+let clearElementButton = document.getElementById("clear-element");
 
 // Adding number to the input field
 
@@ -103,4 +104,7 @@ let resultFunction = equalButton.addEventListener("click", () => {
     console.log(newArray);
 })
 
-
+clearElementButton.addEventListener("click", () => {
+    displayField.value = displayField.value.slice(0, displayField.value.length - 1)
+    
+})
